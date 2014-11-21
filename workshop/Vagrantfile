@@ -10,18 +10,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "chef/centos-6.6"
+  config.vm.box = "leightonshank/base-centos6"
 
   config.vm.hostname = "workshop"
 
-  # use the shell provisioner to install puppet
-  config.vm.provision :shell, path: 'bootstrap.sh'
-
   # provision everything else with puppet
-  config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "default.pp"
-  end
+  #config.vm.provision "puppet" do |puppet|
+  #  puppet.manifests_path = "manifests"
+  #  puppet.manifest_file  = "default.pp"
+  #end
 
   ###
 

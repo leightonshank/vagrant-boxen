@@ -14,6 +14,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "workshop"
 
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.synced_folder "../../../cit-jmu/room7-ops/puppet", "/etc/puppet"
+  config.vm.synced_folder "../../../cit-jmu/room7-ops", "/usr/local/room7-ops"
+  config.vm.synced_folder "../../../cit-jmu/workshop/public", "/var/www/html/workshop"
+  config.vm.synced_folder "./room7", "/usr/local/etc/room7"
+
+  config.ssh.forward_agent = true
+
   # provision everything else with puppet
   #config.vm.provision "puppet" do |puppet|
   #  puppet.manifests_path = "manifests"
